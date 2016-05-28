@@ -1,0 +1,128 @@
+<script src="jquery.masonry.min.js"></script>
+<style>
+    .card1 {
+        width: 100px;
+        height: 100px;
+        float: left;
+        margin: 5px;
+        background-color: #2195c9;
+      }
+</style>
+
+<!--Intro and service-->
+<section id = 'intro' class="section scrollspy">
+<div id="recipewrite_page" >
+    <div class="container">
+        <div class="row">
+            <div  class="col s12">
+                <h2 class="center header text_h2">  <span class="span_h2"> 레시피 알려줘!<i class="mdi-social-group"></i>  </span>  </h2><br><br>
+
+            <form class="col s12" action='/recipesave' method='post'>
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input id="title" name='title' type="text" class="validate">
+                          <label for="email" data-error="wrong" data-success="right">요리 이름이 무엇인가요?</label>
+                        </div>
+                      </div>
+                  </div>
+
+
+                    <div class="row">
+                  <div class="row" style='margin-top:30px'>
+                    <div class="input-field col s12">
+                      <textarea id="textarea1" name='recipe' class="materialize-textarea"></textarea>
+                      <label for="textarea1">레시피를 입력해 주세요</label>
+                    </div>
+                    <div class="input-field col s12" style='margin-top:30px'>
+                      <input id="img_url" name='img_url' type="text" class="validate">
+                          <label for="email" data-error="wrong" data-success="right">이미지 URL 써주세요</label>
+                    </div>
+
+                    <div class="input-field col s12" style='margin-top:30px'>
+                        <input id="title" name='ingre' type="text" class="validate">
+                        <label for="email" name='label' data-error="wrong" data-success="right">태그할 내용을 다음과 같은 형식으로 입력해주세요   ex)#옥수수캔#버터#...(재료를 태그해 주시면 검색하기 좋아요!)</label>
+                    </div>
+
+                  <button class="btn waves-effect waves-light" style='margin-top:30px' type="submit" name="action">레시피 등록하기!
+                  <i class="material-icons right">send</i>
+                  </button>
+
+
+                  </div>
+                  </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Work-->
+<section id="work" class="section scrollspy">
+<div>
+    <div class="container">
+        <h2 class="header text_b">레시피 검색하기 </h2>
+
+
+             <p>
+             <form action='/home/search1' method='post'>
+                <input id="title" name='keyword' type="text" class="validate">
+                <label for="email" data-error="wrong" data-success="right">검색할 내용을 다음과 같이 입력해 주세요<br>ex)#콘치즈#옥수수#...</label>
+              </p>
+                <button class="btn waves-effect waves-light" type="submit" name="action">검색!<i class="material-icons right">send</i> </button>
+              </form>
+              <div class="row" id='recipeshow' style='margin-top:100px'>
+                 <h2 class="header text_b">레시피 구경하기 </h2>
+              <div class='masonry'>
+                <% @recipe.each do |r| %><div  style= 'width:250px;position:relative;float:left;margin-top:100px;margin-left:20px'>
+
+                   <div class="card" id="card1" style="width:100%;float:left">
+                        <div class="card-image waves-effect waves-block waves-light">
+
+                          <img class="activator" style='width:100%' id="img_url" src="<%=r.img_url%>">
+
+                        </div>
+
+                        <div class="card-content">
+                          <span class="card-title activator grey-text text-darken-4"><%= r.title %><i class="material-icons right">more_vert</i></span>
+
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4"><%= r.title %><i class="material-icons right">close</i></span>
+                         
+                          <p><%= r.recipe %></p>
+                          <p>댓글</p>
+                          <table class='striped'>
+                         <% r.replies.each do |i| %>
+                           <tr>
+                    
+                           <td><i class="material-icons" style='float:left'>textsms</i><%=i.reply%></td>
+                           </tr>
+                           <% end %>
+                           </table>
+
+
+
+
+
+                        </div>
+                      </div>
+
+                     <!--댓글-->
+
+                        <form class="col s12" action="/reply/<%= r.id %>" method="post">
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input name="reply" type="text" class="validate" style="width:250px">
+                              <label for="reply" data-error="wrong" data-success="right">댓글</label>
+
+
+                          <button class="btn waves-effect waves-light" type="submit" name="action">댓글 작성하기<i class="material-icons right">send</i> </button>
+                       </div> </div> </form>
+                      </div><% end %>
+
+                </div>
+
+
+    </div>
+    </div>
+</section>
