@@ -27,5 +27,4 @@ Recipe.create(title: '어묵탕',recipe: '!',img_url: "http://yoinbae.com/wp-con
  Ingredient.create(recipe_id: 10,ingre: "#또띠아#계란#설탕#달달#치즈")
  Recipe.create(title: '야매 순대국',recipe: '대파를 썰어주세요. 사골국물도 같이 넣어주세요. 끓기 시작하면 대파와 후추도 함께 넣어주세요. 끓여주면 완성입니당 ',img_url: "https://scontent.cdninstagram.com/t51.2885-15/s320x320/e35/11313334_1581345985510334_221539468_n.jpg?ig_cache_key=MTIxMTU2MzUyMjMzNjc3MTIxOA%3D%3D.2",id: 11)
  Ingredient.create(recipe_id: 11,ingre: "#순대#사골국물#순대국#대파")
- Recipe.create(title: '초스피드 계란 볶음밥',recipe: '기름을 두른 팬에 양파를 투명하게 되도록 익혀주세요. 계란을 잘 스크램블 해준 뒤 밥을 넣어주세요. 새우가루를 좀 넣어도 좋고, 굴소스로 간을 해줘도 맛있어요. ',img_url: "http://newworker.net/files/attach/images/94/849/044/451474fe1dbc58716727e5eb4c09f9c8.jpg",id: 12)
- Ingredient.create(recipe_id: 12,ingre: "#밥#계란#양파#참기름#후리카케")
+
