@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+
+<META NAME="Author" CONTENT="JASKO">
+</HEAD>
+
+<BODY>
+<center>
+<form style = "display:inline-block ; margin-bottom: 0px;"  action = "/home/index/" method = "get">
+    <button type="submit" class = "waves-effect waves-light btn" >원래화면으로</button>
+    </button>
+</form>
+<style>
+  p {
+    background: yellow;
+  }
+</style>
+<h3>순발력 테스트</h3>
+<p id="notice">시작버튼을 누른뒤 빈공간에 색상이 나타나면 바로 멈춤 버튼을 눌러 순발력을 테스트 해 보세요</p>
+
+<!---- 아래의 방법으로 원하는 위치에 복사 해 넣으세요 ------------------>
+
+<script language="JavaScript">
+<!--
+
+var startTime=new Date();
+var endTime=new Date();
+var startPressed=false;
+var bgChangeStarted=false;
+var maxWait=20;
+var timerID;
+
+
+var colors=new Array("tomato","chocolate","limegreen","crimson","darkslategray",
+"aliceblue","mediumslateblue","cornflowerblue","darkorchid","darkkhaki","coral",
+"darkolivegreen","cadetblue")
+
+if (document.all||document.getElementById)
+document.write('<div id="reflex" style="width:135px;height:135px;border:1px solid black" onClick="stopTest()"></div>')
+
+function startTest()
+{
+        if (document.all)
+        document.all.reflex.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+        else if (document.getElementById)
+        document.getElementById("reflex").style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+        else if (document.layers)
+        document.reflexns.document.reflexns_sub.document.bgColor=colors[Math.floor(Math.random()*colors.length)];
+        bgChangeStarted=true;
+        startTime=new Date();
+}
+
+function remark(responseTime)
+{
+        var responseString="";
+        if (responseTime < 0.10)
+                responseString="참 잘했어요! 10점 !!";
+        if (responseTime >= 0.10 && responseTime < 0.20)
+                responseString="잘 했어요! 8점 !!";
+        if (responseTime >=0.20 && responseTime < 0.30)
+                responseString="조금만 더 잘했더라면.. 6점 !!";
+        if (responseTime >=0.30 && responseTime < 0.60)
+                responseString="좀 더 연습 해 보세요 4점 !!";
+        if (responseTime >=0.60 && responseTime < 1)
+                responseString="아직 술이 덜 깨셨나..?? 2점 !!";
+        if (responseTime >=1)
+                responseString="뭐야? 자지 말아요 ! 0000 점 !!!";
+
+        return responseString;
+}
+
+function stopTest()
+{
+        if(bgChangeStarted)
+        {
+                endTime=new Date();
+                var responseTime=(endTime.getTime()-startTime.getTime())/1000;
+                if (document.all)
+                document.all.reflex.style.backgroundColor="white";
+                else if (document.getElementById)
+                document.getElementById("reflex").style.backgroundColor="white";
+                else if (document.layers)
+                document.reflexns.document.reflexns_sub.document.bgColor="white";      
+                alertify.alert("클릭속도 : " + responseTime + " 초 " + remark(responseTime));
+                 $("p.waiting").last().remove();
+                startPressed=false;
+                bgChangeStarted=false;
+        }
+        else
+        {
+                if (!startPressed)
+                {
+                        alertify.alert("먼저 시작버튼을 클릭 하세요");
+                }
+                else
+                {       
+                        clearTimeout(timerID);
+                        startPressed=false;             
+                        alertify.alert("이런! 색깔이 나타나면 누르셔야져..");
+                         $("p.waiting").last().remove();
+                }               
+        }
+}
+
+var randMULTIPLIER=0x015a4e35;
+var randINCREMENT=1;
+var today=new Date();
+var randSeed=today.getSeconds();
+function randNumber()
+{
+        randSeed = (randMULTIPLIER * randSeed + randINCREMENT) % (1 << 31);
+        return((randSeed >> 15) & 0x7fff) / 32767;
+}
+
+function startit()
+{
+        if(startPressed)
+        {
+                alertify.alert("멈춤 버튼 누를 차례에요");
+                return;
+        }
+        else
+        {
+                $( "p#notice" ).append( "<p class='waiting'>색깔이 뜰떄까지 기다려요!</p>" );
+                startPressed=true; 
+                timerID=setTimeout('startTest()', 3000*randNumber());
+        }
+}
+// --> 
+</script>
+<br>
+
+
+<ilayer id="reflexns" width=135; height=135;><layer id="reflexns_sub" width=135; height=135; left=0 top=0 bgColor=yellow></layer></ilayer>
+
+<form name="response">
+
+<input type="button" value="  시작  "class = "waves-effect waves-light btn" onClick="startit()" style="font-weight:bold">
+<input type="button" value="  멈춤  "class = "waves-effect waves-light btn" onClick="stopTest()" style="font-weight:bold">
+</form>
+
+<!------------------------- 여기까지 ---------------------------------->
+</center>
+</BODY>
+</HTML>

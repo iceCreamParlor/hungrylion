@@ -1,7 +1,8 @@
 <script src="jquery.masonry.min.js"></script>
 <style>
     .card1 {
-      
+        width: 100px;
+        height: 100px;
         float: left;
         margin: 5px;
         background-color: #2195c9;
@@ -9,10 +10,10 @@
 </style>
 <div class="container">
     <h2 class="header text_b">레시피 구경하기 </h2>
-   
-        <div class="card" style= 'width:250px; position:relative;float:right;'><% @ingre2.each do |i| %>
+      <div class='masonry'>
+        <div class="card"><% @ingre2.each do |i| %>
                 
-                   <div class="card" id='card1'>
+                   <div class="card" id='card1' style="width:100%;float:left">
                         <div class="card-image waves-effect waves-block waves-light">
                           <img class="activator" style='width:100%'src="<%= Recipe.find(i.recipe_id).img_url %>">
                         </div>
@@ -30,22 +31,23 @@
          
            
            <% end %>
+           </div>
            
-    
+    </div>
 </div> 
 
-<script>
-  $(function(){
+// <script>
+//   $(function(){
  
-    var $container = $('#card1');
+//     var $container = $('#card1');
   
-    // $container.imagesLoaded( function(){
-      $container.masonry({
-           columnWidth: 300,
-           percentPosition: true,
-            itemSelector : '.card1'
-      });
-    // });
+//     // $container.imagesLoaded( function(){
+//       $container.masonry({
+//           columnWidth: 300,
+//           percentPosition: true,
+//             itemSelector : '.card1'
+//       });
+//     // });
   
-  });
-</script>
+//   });
+// </script>

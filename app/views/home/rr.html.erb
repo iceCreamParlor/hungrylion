@@ -1,0 +1,53 @@
+
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title> russian rullet </title>
+<meta http-equiv=content-type content=text/html; charset=euc-kr>
+</head>
+
+<body>
+<form style = "display:inline-block ; margin-bottom: 0px;"  action = "/home/index/" method = "get">
+    <button type="submit" class = "waves-effect waves-light btn" >원래화면으로</button>
+    </button>
+</form>
+<center>
+<P><h2>러시안 룰렛 게임</h2>
+ 
+<table border="0" width="500" cellspacing="0" cellpadding="0">
+  <tr>
+  <td><img border="0" src="/image/roulette.jpg" width="152" height="216" align = right ></td>
+     </td>
+    <td><form name="fire" style = "textalign= left">
+        <p>
+        <input name="message" type="button" class = "waves-effect waves-light btn-large"value="쫄지말고 쏴라~~" onClick="fireit()">
+        </p>
+     
+    </form>
+<script>
+var count =0
+var theone=(Math.random()*5)
+function fireit(){
+
+ 
+    if (count > theone)
+        alertify.alert().set('msg','빵!!! 넌 죽었어').show()
+    else{
+        document.fire.message.value="아직"+ (5-count) + "발 남았다!!"
+        //document.fire.message.value=(6-count)
+        count = count +1
+        setTimeout("document.fire.message.value='쫄지말고 쏴라~~'",500)
+ 
+        
+    }
+        
+}
+ 
+</script>
+</td>
+</tr>
+</table>
+</center>
+
+</body>
+</html>
