@@ -45,7 +45,7 @@ var Yl = {
 
  ,arrMDiv : [] //이동선 배열 번호값 저장, 이동후 확인용
 
- ,nMaxWidth : 1000 //최고 넓이
+ ,nMaxWidth : 400 //최고 넓이
  ,nWidth : 0 //사다리 넓이
  ,nHeight : 300 //사다리 높이
 
@@ -88,12 +88,12 @@ var Yl = {
    this.arrBotDiv[i].align = "center";
    this.arrGoDiv[i].align = "center";
 
-   this.arrTopDiv[i].innerHTML = (i+1)+'<br><input type="text" id="inp_top_'+i+'" value="" style="width:90%;text-align:center; background-color:#f0ff90;border-radius:25px text-align:center;" tabindex="'+(i+1)+'" />';
+   this.arrTopDiv[i].innerHTML = (i+1)+'<br><input type="text" id="inp_top_'+i+'" value="" style="width:50%;text-align:center;background-color:#f0ff90;border-radius:25px" tabindex="'+(i+1)+'" />';
    if( i == random)
-    this.arrBotDiv[i].innerHTML = '<input  type="hidden" id="inp_bot_'+i+'" value="꽝" style=" text-align:center;width:90%" tabindex="'+((i+1)+50)+'" />';
+    this.arrBotDiv[i].innerHTML = '<input  type="hidden" id="inp_bot_'+i+'" value="꽝" style=" text-align:center;width:50%" tabindex="'+((i+1)+50)+'" />';
     //var input = document.createElement('textarea');   
    else
-     this.arrBotDiv[i].innerHTML = '<input type="hidden" id="inp_bot_'+i+'" value="" style=" text-align:center;width:90%" tabindex="'+((i+1)+50)+'" />';
+     this.arrBotDiv[i].innerHTML = '<input type="hidden" id="inp_bot_'+i+'" value="" style=" text-align:center;width:50%" tabindex="'+((i+1)+50)+'" />';
   
   
    this.getEl("div_body").appendChild(this.arrTopDiv[i]);
@@ -121,7 +121,7 @@ var Yl = {
 // (i+1)+"<br>"+this.getEl("inp_top_"+i).value;
    //this.arrTopDiv[i].innerHTML = "아래 버튼을 클릭"
    this.arrBotDiv[i].innerHTML = this.getEl("inp_bot_"+i).value;
-   this.arrGoDiv[i].innerHTML = '<i class="material-icons" onClick="Yl.start('+i+')">repeat</i>';
+   this.arrGoDiv[i].innerHTML = '<i class="material-icons" onClick="Yl.start('+i+')">play_for_work</i>';
 // '<input type="button" value="GO" onClick="Yl.start('+i+')">';
   // this.arrTopDiv[i].style.overflow = "auto";
    //this.arrBotDiv[i].style.overflow = "auto";
@@ -361,7 +361,7 @@ document.onkeydown = function(e){
 
 
 
-<div id="div_body" style="width:1000px;height:450px;border:1px solid #CCCCCC;position:relative;"></div>
+<div id="div_body" style="width:400px;height:450px;border:1px solid #CCCCCC;position:relative;"></div>
 </center>
 </body>
 </html>
