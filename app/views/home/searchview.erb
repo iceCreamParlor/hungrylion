@@ -1,0 +1,51 @@
+<script src="jquery.masonry.min.js"></script>
+<style>
+    .card1 {
+      
+        float: left;
+        margin: 5px;
+        background-color: #2195c9;
+      }
+</style>
+<div class="container">
+    <h2 class="header text_b">레시피 구경하기 </h2>
+   
+        <div class="card" style= 'width:250px; position:relative;float:right;'><% @ingre2.each do |i| %>
+                
+                   <div class="card" id='card1'>
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" style='width:100%'src="<%= Recipe.find(i.recipe_id).img_url %>">
+                        </div>
+        
+                        <div class="card-content">
+                          <span class="card-title activator grey-text text-darken-4"><%= Recipe.find(i.recipe_id).title %><i class="material-icons right">more_vert</i></span>
+                          
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4"><%= Recipe.find(i.recipe_id).title %><i class="material-icons right">close</i></span>
+                          <p><%= Recipe.find(i.recipe_id).recipe %></p>
+                        
+                        </div>
+                      </div>
+         
+           
+           <% end %>
+           
+    
+</div> 
+
+<script>
+  $(function(){
+ 
+    var $container = $('#card1');
+  
+    // $container.imagesLoaded( function(){
+      $container.masonry({
+           columnWidth: 300,
+           percentPosition: true,
+            itemSelector : '.card1'
+      });
+    // });
+  
+  });
+</script>
